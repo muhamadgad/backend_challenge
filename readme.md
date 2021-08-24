@@ -1,4 +1,4 @@
-	<h1  align="center">backend-challenge</h1>
+<h1  align="center">Backend Challenge</h1>
 
 Muhammad Gad ([muhammadabdelfattah](https://github.com/muhammadabdelfattah))
 
@@ -29,7 +29,7 @@ This is a simple REST API that lists the list of the languages used by the 100 b
 ## Technologies used
 
 	- Flask			    : lightweight WSGI web application framework
-	- Flask-swagger-ui	: for the documentation
+	- Flask-swagger-ui	    : for the documentation
 
 ## Quick Start
 

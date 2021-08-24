@@ -1,4 +1,6 @@
 from flask import Flask
+from datetime import datetime, timedelta
+import requests
 
 app = Flask(__name__)
 
@@ -6,6 +8,13 @@ def get_repos():
     '''
     this function will return the first 100 repositories ordered by stars.
     '''
+    # start date of the last 30 days from now
+    date = (datetime.now() - timedelta(30)).date()
+
+    url = f'https://api.github.com/search/repositories?q=created:>{date}&sort=stars&order=desc&page=1&per_page=100'
+    response = requests.get(url)
+    repos = response.json()
+    return repos
 
 def list_of_lang():
     '''

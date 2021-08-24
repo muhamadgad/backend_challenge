@@ -1,0 +1,76 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "backend challenge REST API",
+        "description": "This is a sample API list trending languages in 100 trending Github repositories.",
+        "contact": {
+            "email": "mohamad.gad16@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:5000"
+        }
+    ],
+    "tags": [
+        {
+            "name": "languages",
+            "description": "Get Github Trending languages"
+        }
+    ],
+    "paths": {
+        "/trending_languages": {
+            "get": {
+                "tags": [
+                    "languages"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/languages"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "languages": {
+                "type": "object",
+                "properties": {
+                    "language_name": {
+                        "type": "object",
+                        "properties": {
+                            "repositories_count": {
+                                "type": "integer",
+                                "description": "number of repositories using that language"
+                            },
+                            "repositories": {
+                                "type": "array",
+                                "description": "list of repositories using that language",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "repository_name": {
+                                            "type": "string"
+                                        },
+                                        "repository_url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

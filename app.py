@@ -2,6 +2,9 @@ from flask import Flask
 from datetime import datetime, timedelta
 import requests, json
 
+# For our api documentation using swagger
+from flask_swagger_ui import get_swaggerui_blueprint
+
 app = Flask(__name__)
 
 def get_repos():
@@ -48,6 +51,19 @@ def get_lang():
     including the count and list of repositories for each language.
     '''
     return list_of_lang()
+
+# API Documentation config
+SWAGGER_URL = '/docs'
+API_URL = '/static/swagger.json'
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name' : "Github_Trendings"
+    }
+)
+
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
